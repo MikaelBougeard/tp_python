@@ -2,9 +2,11 @@
 #!/usr/bin/python
 
 
-produits = { 1: { 'nom': 'banane', 'prix': 4 },2: { 'nom': 'pomme', 'prix': 2 },3: { 'nom': 'orange', 'prix': 1.5 },4: { 'nom': 'poire', 'prix': 3 }  }
-print(produits[1]['prix'])
+produits = { 1: { 'nom': 'banane', 'prix': 4 }, 2: { 'nom': 'pomme', 'prix': 2 }, 3: { 'nom': 'orange', 'prix': 1.5 }, 4: { 'nom': 'poire', 'prix': 3 } }
+for key,value in produits.items():
+    print('{}\t | {}\t | {}\t '.format(key,value['nom'],value['prix']))
 
+    # print(key,"\t",value['nom'],"\t", value['prix'])
 
 np = int(input('Combien de produits ? : '))
 for i in range(0, np):
