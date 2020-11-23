@@ -9,5 +9,7 @@ for i in range(0, np):
         print("saisies invalides")
         pht = float(input('saisir prix hors taxe : '))
         qt=float(input('saisir la quantité : '))
-    ptc=pht*qt*0.8
+    ptc=pht*qt*1.2
+    if ptc>200:
+        ptc=ptc*0.95
     print("Prix TTC : ", ptc)
