@@ -7,19 +7,31 @@ for key,value in produits.items():
     print('{}\t | {}\t | {}\t '.format(key,value['nom'],value['prix']))
 
     # print(key,"\t",value['nom'],"\t", value['prix'])
-
-np = int(input('Combien de produits ? : '))
-for i in range(0, np):
-    print("produit", i+1)
-    id_produit = int(input('saisir id produit : '))
-    qt=float(input('saisir la quantité : '))
-    while id_produit<=0 or qt<=0 :
-        print("saisies invalides")
-        id_produit = float(input('saisir id produit : '))
-        qt=float(input('saisir la quantité : '))
-    print(id_produit)
-    pht=(produits[id_produit]['prix'])*qt
-    pttc=pht*1.20
-    if pttc>200:
-        pttc=pttc*0.95
-    print("Prix TTC : ", pttc)
+totalPrixTTC  = 0
+totalPrixHT = 0
+try:
+    np = int(input('Combien de produits ? : '))
+except ValueError:
+    print("Saisie invalide")
+else:
+    for i in range(0, np):
+        print("produit", i+1)
+        try:
+            id_produit = int(input('saisir id produit : '))
+            qt=float(input('saisir la quantité : '))
+        except ValueError:
+            print("Id saisie invalide")
+        else:
+            prixHT=(produits[id_produit]['prix'])*qt
+            prixTTC=prixHT*1.20
+            totalPrixTTC += prixTTC
+            totalPrixHT += prixHT
+            remise = 0
+            if totalPrixTTC>200:
+                remise = totalPrixTTC*5/100
+                totalprixTTC=totalPrixTTC*0.95
+            print("Prix HT : " ,prixHT)
+            print("Prix TTC : ", prixTTC)
+            print("Remise : ", remise)
+    print("Total Prix HT : " ,totalPrixHT)
+    print("Total Prix TTC : ", totalPrixTTC)
