@@ -26,12 +26,12 @@ except ValueError:
     print("Saisie invalide")
 else:
     for i in range(0, np):
-        print("Commande numéro ", i+1)
+        print("Produit numéro ", i+1)
         try:
             id_produit = int(input('saisir id produit : '))
             qt=float(input('saisir la quantité : '))
         except ValueError:
-            print("Id saisie invalide")
+            print("Id ou quantité saisie invalide")
         else:
             prixHT=(produits[id_produit]['prix'])*qt
             srPrixHT = prixHT
