@@ -28,12 +28,12 @@ else:
     for i in range(0, np):
         print("Produit numéro ", i+1)
         try:
-            id_produit = int(input('saisir id produit : '))
-            qt=float(input('saisir la quantité : '))
+            id = int(input('saisir id produit : '))
+            quantite = float(input('saisir la quantité : '))
         except ValueError:
             print("Id ou quantité saisie invalide")
         else:
-            prixHT=(produits[id_produit]['prix'])*qt
+            prixHT=(produits[id]['prix'])*quantite
             srPrixHT = prixHT
             prixHT= remise(prixHT)
             prixTTC= tva(prixHT)
@@ -42,9 +42,10 @@ else:
             totalPrixHT += prixHT
 
             print("Prix TTC Produit(s) : ", srPrixHT)
-            print("Remise 5% : ", prixHT*5/100)
-            print("Total Prix HT Produit(s) : ", prixHT)
-            print("Total Prix TTC Produit(s) : ", prixTTC)
+            if srPrixHT>200 :
+                print("Remise 5% : ", prixHT*5/100)
+            print("Total Prix HT Produit(s) : ","%.2f" % prixHT)
+            print("Total Prix TTC Produit(s) : ","%.2f" % prixTTC)
 
-    print("Total Prix HT : " ,totalPrixHT)
-    print("Total Prix TTC : ", totalPrixTTC)
+    print("Total Prix HT : " ,"%.2f" % totalPrixHT)
+    print("Total Prix TTC : ","%.2f" % totalPrixTTC)
